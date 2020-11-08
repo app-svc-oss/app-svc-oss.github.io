@@ -14,11 +14,8 @@ Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit number
 
 Jekyll also offers powerful support for code snippets:
 
+
 {% highlight xml %}
-<?xml version="1.0" encoding="UTF-8"?>
-<configuration>
-    <system.webServer>
-        <!-- BEGIN: New lines to add for GZIP! -->
         <urlCompression doStaticCompression="true" doDynamicCompression="true"/>
         <httpCompression>
             <dynamicTypes>
@@ -43,7 +40,41 @@ Jekyll also offers powerful support for code snippets:
                 <add enabled="false" mimeType="*/*"/>
             </staticTypes>
         </httpCompression>
-        <!-- END: New lines to add for GZIP! -->
+{% endhighlight %}
+
+
+
+
+{% highlight xml %}
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+<!-- BEGIN: New lines to add for GZIP! -->
+        <urlCompression doStaticCompression="true" doDynamicCompression="true"/>
+        <httpCompression>
+            <dynamicTypes>
+                <clear />
+                <add enabled="true" mimeType="text/*"/>
+                <add enabled="true" mimeType="message/*"/>
+                <add enabled="true" mimeType="application/x-javascript"/>
+                <add enabled="true" mimeType="application/javascript"/>
+                <add enabled="true" mimeType="application/json"/>
+                <add enabled="false" mimeType="*/*"/>
+                <add enabled="true" mimeType="application/atom+xml"/>
+                <add enabled="true" mimeType="application/atom+xml;charset=utf-8"/>
+            </dynamicTypes>
+            <staticTypes>
+                <clear />
+                <add enabled="true" mimeType="text/*"/>
+                <add enabled="true" mimeType="message/*"/>
+                <add enabled="true" mimeType="application/javascript"/>
+                <add enabled="true" mimeType="application/atom+xml"/>
+                <add enabled="true" mimeType="application/xaml+xml"/>
+                <add enabled="true" mimeType="application/json"/>
+                <add enabled="false" mimeType="*/*"/>
+            </staticTypes>
+        </httpCompression>
+<!-- END: New lines to add for GZIP! -->
         <rewrite>
             <rules>
                 <rule name="WordPress: http://<!-- Your Site Name Here -->.azurewebsites.net" patternSyntax="Wildcard">
@@ -56,20 +87,19 @@ Jekyll also offers powerful support for code snippets:
                 </rule>
             </rules>
         </rewrite>
-        <!-- BEGIN: New lines to add to block xmlrpc.php! -->
+<!-- BEGIN: New lines to add to block xmlrpc.php! -->
         <!-- 	  NOTE: You may want to disable the WP api as well with a plugin or block all access to wp-json/wp/v2/ -->
-        <!-- NOTE: Disabling the WP API may break some plugins and features, do so carefully and make sure to test! -->
         <security>
             <requestFiltering>
                 <denyUrlSequences>
                     <add sequence="xmlrpc.php" />
-<!--                     the line below disables the whole wp api this may break something -->
+                <!-- the line below disables the whole wp api this may break something -->
+                <!-- NOTE: Disabling the WP API may break some plugins and features, do so carefully and make sure to test! -->
                     <add sequence="wp-json/wp/v2/" />
                 </denyUrlSequences>
             </requestFiltering>
         </security>
-        <!-- END: New lines to add to block xmlrpc.php! -->
+<!-- END: New lines to add to block xmlrpc.php! -->
     </system.webServer>
 </configuration>
 {% endhighlight %}
-
