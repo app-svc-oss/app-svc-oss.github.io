@@ -1,6 +1,0 @@
----
----
-User-agent: *
-Disallow: /impressum
-Disallow: /impressum/
-Disallow: /impressum.html 
