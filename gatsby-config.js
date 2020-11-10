@@ -1,11 +1,17 @@
+require('dotenv-defaults/config')
+
+require("dotenv").config({
+  path: `.env`,
+})
+
 module.exports = {
   siteMetadata: {
-    title: `${process.env.SITE_TITLE}`,
-    author: `${process.env.SITE_AUTHOR}`,
-    description: `${process.env.SITE_DESCRIPTION}`,
-    siteUrl: `${process.env.SITE_URL}`,
+    title: process.env.SITE_TITLE,
+    author: process.env.SITE_AUTHOR,
+    description: process.env.SITE_DESCRIPTION,
+    siteUrl: process.env.SITE_URL,
     social: {
-      twitter: `${process.env.TWITTER_USERNAME}`,
+      twitter: process.env.TWITTER_USERNAME,
     },
   },
   plugins: [
@@ -50,7 +56,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: `${process.env.GOOGLE_ANALYTICS_TRACKING_ID}`,
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
       },
     },
     `gatsby-plugin-feed`,

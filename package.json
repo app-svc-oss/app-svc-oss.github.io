@@ -10,6 +10,7 @@
   "dependencies": {
     "@deckdeckgo/highlight-code": "^2.1.1",
     "babel-plugin-styled-components": "^1.10.0",
+    "dotenv-defaults": "^2.0.1",
     "dotenv-expand": "^5.1.0",
     "gatsby": "^2.3.31",
     "gatsby-image": "^2.0.40",
@@ -56,6 +57,7 @@
     "@types/styled-components": "^4.1.14",
     "@types/typography": "^0.16.2",
     "graphql": "^14.2.1",
+    "husky": "^4.3.0",
     "prettier": "^1.17.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
@@ -80,9 +82,9 @@
   },
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
-    "start": "npm run develop",
+    "dev": "GATSBY_ENV=development gatsby develop --verbose",
+    "format": "prettier --write src/**/*.{js,jsx,ts,tsx}",
+    "start": "",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\"",
     "tsc": "tsc --noEmit",
